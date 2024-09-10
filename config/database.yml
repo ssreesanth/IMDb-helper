@@ -82,3 +82,4 @@ production:
   database: im_db_helper_production
   username: im_db_helper
   password: <%= ENV["IM_DB_HELPER_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
