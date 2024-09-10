@@ -9,5 +9,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :lists
+  get "/imdb", to: "lists#index"
+  post "/imdb/import", to: "lists#import_and_create"
+  get "imdb/:id", to: "lists#show"
+  post "/imdb/filter", to: "lists#filter", as: :imdb_filter
+  delete "imdb/:id", to: "lists#destroy"
+
+  scope "/imdb" do
+    resources :lists, only: [:edit, :update]
+  end
 end

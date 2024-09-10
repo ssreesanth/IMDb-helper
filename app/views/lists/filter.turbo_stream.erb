@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "movies_list" do %>
+  <%= render partial: "movies_list", locals: { movies: @filtered_movies } %>
+<% end %>

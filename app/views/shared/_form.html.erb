@@ -1,0 +1,6 @@
+<%= form_with url: imdb_import_path, local: false, html: {multipart: true}, remote: true do |form| %>
+  <%= form.label :"List Name" %>
+  <%= form.text_field :title %>
+  <%= form.file_field :file %>
+  <%= form.submit "Upload file" %>
+<% end %>
