@@ -1,0 +1,34 @@
+<h2>IMDB Watchlist Helper</h2>
+<div>
+  <h3>Add a new IMDb Watchlist</h3>
+</div>
+<div>
+  <%= render "shared/form"  %>
+</div>
+
+<%= form_with url: imdb_filter_path, method: :post, local: true do |form| %>
+  <%= form.label :imdb_rating, "Minimum IMDb Rating" %>
+  <%= form.number_field :imdb_rating, step: 1, min: 0, max: 10, value: params[:imdb_rating] %>
+  <%= form.label :genre, "Genre" %>
+  <%= form.text_field :genre, value: params[:genre] %>
+  <%= form.submit "Filter" %>
+<% end %>
+
+
+<div>
+<div id="movies_list">
+  <h3>Filtered Movies:</h3>
+  <% if @filtered_movies.present? %>
+    <% @filtered_movies.each do |movie| %>
+      <p><%= movie.title %> - IMDb Rating: <%= movie.imdb_rating %></p>
+    <% end %>
+  <% else %>
+    <p>No movies found.</p>
+  <% end %>
+</div>
+
+
+
+
+
+</div>
