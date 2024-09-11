@@ -3,10 +3,12 @@
   <% if movies.any? %>
     <p><%= movies.count %> Items found</p>
     <ul>
-      <% movies.each do |movie| %>
-        <li><b><%= movie.title %></b> (<%= movie.year %>) - <%= movie.imdb_rating %> <br>
-          <%= movie.genre %></li>
-      <% end %>
+      <div class="movie">
+        <% movies.each do |movie| %>
+          <li><b><%= movie.title %></b> (<%= movie.year %>) - <%= movie.imdb_rating %> <br>
+            <%= movie.genre %></li>
+        <% end %>
+      </div>
     </ul>
   <% else %>
     <p>No movies found.</p>

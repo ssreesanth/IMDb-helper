@@ -2,3 +2,10 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+input::placeholder {
+  color: #b8acac;
+  opacity: 0.7;
+  font-style: italic;
+}
+

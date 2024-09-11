@@ -28,13 +28,14 @@ class ListsController < ApplicationController
       @filtered_movies = @filtered_movies.where("genre LIKE ?", "%#{genre}%")
     end
 
+    if params[:media].present?
+      @filtered_movies = @filtered_movies.where("title_type = ?", params[:media])
+    end
 
     respond_to do |format|
       # format.html { render :index } # Ensure that the index view is rendered with filtered results
       format.turbo_stream { render turbo_stream: turbo_stream.replace('movies_list', partial: 'shared/movies_list', locals: { movies: @filtered_movies }) }
     end
   end
-
-
 
 end
