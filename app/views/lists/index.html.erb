@@ -1,34 +1,30 @@
-<h2>IMDB Watchlist Helper</h2>
-<div>
-  <h3>Add a new IMDb Watchlist</h3>
-</div>
-<div>
-  <%= render "shared/form"  %>
-</div>
+<div class="container mt-4">
+  <h2 class="mb-4">IMDB Watchlist Helper</h2>
 
-<%= form_with url: imdb_filter_path, method: :post, local: true do |form| %>
-  <%= form.label :imdb_rating, "Minimum IMDb Rating" %>
-  <%= form.number_field :imdb_rating, step: 1, min: 0, max: 10, value: params[:imdb_rating] %>
-  <%= form.label :genre, "Genre" %>
-  <%= form.text_field :genre, value: params[:genre] %>
-  <%= form.submit "Filter" %>
-<% end %>
+  <div class="mb-4">
+    <%= render "shared/form" %>
+  </div>
 
+  <div class="mb-4">
+    <%= form_with url: imdb_filter_path, method: :post, local: true, html: { class: 'form-inline' } do |form| %>
+      <div class="form-group mb-2">
+        <%= form.label :min_imdb_rating, "IMDB Rating Range", class: 'mr-2' %>
+        <%= form.number_field :min_imdb_rating, step: 0.1, min: 0, max: 10, value: params[:min_imdb_rating], class: 'form-control' %>
+        <%= form.label :max_imdb_rating, "-", class: 'mx-2' %>
+        <%= form.number_field :max_imdb_rating, step: 0.1, min: 0, max: 10, value: params[:max_imdb_rating], class: 'form-control' %>
+      </div>
 
-<div>
-<div id="movies_list">
-  <h3>Filtered Movies:</h3>
-  <% if @filtered_movies.present? %>
-    <% @filtered_movies.each do |movie| %>
-      <p><%= movie.title %> - IMDb Rating: <%= movie.imdb_rating %></p>
+      <div class="form-group mb-2">
+        <%= form.label :genre, "Genre", class: 'mr-2' %>
+        <%= form.text_field :genre, value: params[:genre], class: 'form-control' %>
+      </div>
+
+      <div class="form-group mb-2">
+        <%= form.submit "Filter", class: 'btn btn-primary' %>
+      </div>
     <% end %>
-  <% else %>
-    <p>No movies found.</p>
-  <% end %>
-</div>
+  </div>
 
-
-
-
-
+  <div id="movies_list" class="mt-4"></div>
+  
 </div>

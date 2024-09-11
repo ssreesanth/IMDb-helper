@@ -1,0 +1,14 @@
+<!-- app/views/lists/_movies_list.html.erb -->
+<div id="movies_list">
+  <% if movies.any? %>
+    <p><%= movies.count %> Items found</p>
+    <ul>
+      <% movies.each do |movie| %>
+        <li><b><%= movie.title %></b> (<%= movie.year %>) - <%= movie.imdb_rating %> <br>
+          <%= movie.genre %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No movies found.</p>
+  <% end %>
+</div>
