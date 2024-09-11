@@ -5,8 +5,6 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
-
-
   def import_and_create
     if params[:file].present?
       List.import(params[:file], current_user.id)
@@ -17,19 +15,25 @@ class ListsController < ApplicationController
   end
 
   def filter
+    @filtered_movies = List.all
 
-    @filtered_movies = List.where("imdb_rating >= ?", params[:imdb_rating])
-    @filtered_movies = List.where("genre >= ?", params[:genre])
+    if params[:min_imdb_rating].present? && params[:max_imdb_rating].present?
+      min_rating = params[:min_imdb_rating]
+      max_rating = params[:max_imdb_rating]
+      @filtered_movies = @filtered_movies.where("imdb_rating BETWEEN ? AND ?", min_rating, max_rating)
+    end
+
+    if params[:genre].present?
+      genre = params[:genre].capitalize
+      @filtered_movies = @filtered_movies.where("genre LIKE ?", "%#{genre}%")
+    end
+
 
     respond_to do |format|
-      format.html { render :index } # Ensure that the index view is rendered with filtered results
-      format.turbo_stream { render turbo_stream: turbo_stream.replace('movies_list', partial: 'lists/movies_list', locals: { movies: @filtered_movies }) }
+      # format.html { render :index } # Ensure that the index view is rendered with filtered results
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('movies_list', partial: 'shared/movies_list', locals: { movies: @filtered_movies }) }
     end
   end
-
-
-
-
 
 
 
