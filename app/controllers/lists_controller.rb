@@ -33,7 +33,7 @@ class ListsController < ApplicationController
     end
 
     respond_to do |format|
-      # format.html { render :index } # Ensure that the index view is rendered with filtered results
+      format.html { render :index } # Ensure that the index view is rendered with filtered results
       format.turbo_stream { render turbo_stream: turbo_stream.replace('movies_list', partial: 'shared/movies_list', locals: { movies: @filtered_movies }) }
     end
   end
