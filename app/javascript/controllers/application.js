@@ -1,5 +1,5 @@
 import { Application } from "@hotwired/stimulus";
-import ImdbController from "../controllers/imdb_controller"; // Ensure the relative path is correct
+import ImdbController from "./imdb_controller"; 
 
 const application = Application.start();
 application.register("imdb-id", ImdbController);
