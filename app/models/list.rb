@@ -12,6 +12,7 @@ class List < ApplicationRecord
         imdb_rating: row["IMDb Rating"],
         genre: row["Genres"],
         year: row["Year"],
+        imdb_id: row["Const"],
         user_id: user_id,
       )
     end
