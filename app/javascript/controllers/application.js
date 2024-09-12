@@ -1,9 +1,8 @@
-import { Application } from "@hotwired/stimulus"
+import { Application } from "@hotwired/stimulus";
+import ImdbController from "../controllers/imdb_controller"; // Ensure the relative path is correct
 
-const application = Application.start()
+const application = Application.start();
+application.register("imdb-id", ImdbController);
 
-// Configure Stimulus development experience
-application.debug = false
-window.Stimulus   = application
-
-export { application }
+window.Stimulus = application;
+export { application };
