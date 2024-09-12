@@ -4,6 +4,7 @@ export default class extends Controller {
 
   connect() {
     console.log("IMDB controller connected");
+    // this.currentDetails = null;
   }
   imdbinfo(event) {
     console.log("seeking imdb-info")
@@ -20,10 +21,14 @@ export default class extends Controller {
   }
 
   displayMovieDetails(data, listItem) {
+
+    if (this.currentDetails) {
+      this.currentDetails.remove();
+    }
     // Create HTML content for movie details
     const movieDetailsHTML = `
           <div class="movie-details">
-            <img src="${data.Poster}" alt="${data.Title} Poster" style="width:100px; float:left; margin-right:10px;">
+            <img src="${data.Poster}" alt="${data.Title} Poster" style="width:100px; height:156px; float:left; margin-right:10px;">
             <p><b>Title:</b> ${data.Title}</p>
             <p><b>Rating:</b> ${data.imdbRating}</p>
             <p><b>Year:</b> ${data.Year}</p>
@@ -34,6 +39,7 @@ export default class extends Controller {
     // Insert the details after the clicked <li> element
     listItem.insertAdjacentHTML('afterend', movieDetailsHTML);
     listItem.style.display = 'none';
+    this.currentDetails = listItem.nextElementSibling;
 
   }
 }

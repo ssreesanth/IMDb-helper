@@ -1,0 +1,31 @@
+.movie-details{
+  background-color: antiquewhite;
+  border-radius: 8px;
+  box-shadow: 1px 1px 25px #4f0202e3;
+  padding: 5px;
+  margin-bottom: 10px;
+  min-height: 160px;
+}
+
+.movie-details img{
+  padding-bottom: 2px;
+}
+
+.movie-details p{
+  margin: 10px;
+}
+
+.movie-list{
+  list-style-type: none;
+  padding-left: 0;
+}
+
+@media (max-width: 600px) {
+  .movie-details {
+    margin-bottom: 5px;
+    padding: 2px;
+  }
+  .movie-details p{
+    margin: 2px;
+  }
+}
