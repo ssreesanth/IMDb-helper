@@ -25,7 +25,17 @@ Rails.application.configure do
   # config.public_file_server.enabled = false
 
   # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
+
+  # Ensures assets are digested
+  config.assets.digest = true
+
+  # Serve static assets
+  config.serve_static_files = true
+
+  # Enable asset versioning (cache-busting)
+  config.assets.version = '1.0'
+
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
