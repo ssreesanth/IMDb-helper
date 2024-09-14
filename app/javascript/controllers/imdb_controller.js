@@ -12,7 +12,7 @@ export default class extends Controller {
     const imdbId = event.currentTarget.dataset.imdbId;
     const listItem = event.currentTarget;
 
-    fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=adf1f2d7`)
+    fetch(`https://www.omdbapi.com/?i=${imdbId}&apikey=adf1f2d7`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
