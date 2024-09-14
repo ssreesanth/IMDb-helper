@@ -5,6 +5,11 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def new
+    @list = List.new
+  end
+
+
   def import_and_create
     if params[:file].present?
       List.import(params[:file], current_user.id)
