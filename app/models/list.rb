@@ -2,18 +2,18 @@ require "csv"
 
 class List < ApplicationRecord
   belongs_to :user
+  has_many :movies, dependent: :destroy
 
-  def self.import(file, user_id)
+  def self.import(file, list_id)
     CSV.foreach(file.path, headers: true) do |row|
-      List.create!(
+      Movie.create!(
         title: row["Title"],
-        url: row["URL"],
         title_type: row["Title Type"],
         imdb_rating: row["IMDb Rating"],
         genre: row["Genres"],
         year: row["Year"],
         imdb_id: row["Const"],
-        user_id: user_id,
+        list_id: list_id
       )
     end
   end
