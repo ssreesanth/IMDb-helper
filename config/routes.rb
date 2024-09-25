@@ -14,9 +14,8 @@ Rails.application.routes.draw do
   post "/imdb/import", to: "lists#import_and_create"
   get "imdb/:id", to: "lists#show"
   post "/imdb/filter", to: "lists#filter", as: :imdb_filter
-  delete "imdb/:id", to: "lists#destroy", as: :delete_list
 
   scope "/imdb" do
-    resources :lists, only: [:edit, :update]
+    resources :lists, only: [:edit, :update, :destroy]
   end
 end
