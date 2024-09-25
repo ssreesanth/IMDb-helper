@@ -74,4 +74,17 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Ensure assets are compiled dynamically during development
+  config.assets.compile = true
+
+  # Disable asset digests in development (digest is used for caching in production)
+  # config.assets.digest = false
+
+  # Enable debugging for better error messages and expanded CSS/JS
+  config.assets.debug = true
+
+  # Disable class caching for easier code reloading in development
+  config.cache_classes = false
+
 end

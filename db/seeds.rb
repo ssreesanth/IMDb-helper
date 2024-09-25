@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
 puts "Destroying all the lists"
 List.destroy_all
 puts "Destruction complete"
+

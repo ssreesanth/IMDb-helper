@@ -4,6 +4,9 @@ class List < ApplicationRecord
   belongs_to :user
   has_many :movies, dependent: :destroy
 
+  before_destroy :prevent_default_list_deletion
+
+
   def self.import(file, list_id)
     CSV.foreach(file.path, headers: true) do |row|
       Movie.create!(
@@ -17,4 +20,14 @@ class List < ApplicationRecord
       )
     end
   end
+
+  private
+
+    def prevent_default_list_deletion
+      if name == "Default List"
+        errors.add(:base, "Cannot delete the default list.")
+        throw(:abort)
+      end
+    end
+
 end
