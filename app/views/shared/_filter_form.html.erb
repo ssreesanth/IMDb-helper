@@ -3,11 +3,16 @@
     <%= form.collection_select :list_id, @lists, :id, :name, { prompt: "Select list" }, { class: "form-control" } %>
   </div>
 
-  <div class="form-group mb-2">
-    <%= form.select :media, options_for_select(["Movie", "TV Series"], selected: params[:media]), {}, class: 'form-control' %>
+  <div class="form-group mb-2 row g-2">
+    <div class="col">
+      <%= form.select :media, options_for_select(["Movie", "TV Series"], selected: params[:media]), {}, class: 'form-control' %>
+    </div>
+    <div class="col">
+      <%= form.text_field :genre, value: params[:genre], placeholder: 'Genre', class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="form-group mb-2 row">
+  <div class="form-group mb-2 row g-2">
     <div class= "col">
       <%= form.number_field :min_imdb_rating, step: 0.1, min: 0, max: 10, value: params[:min_imdb_rating], placeholder: 'Min Rating', class: 'form-control' %>
     </div>
@@ -16,14 +21,10 @@
     </div>
   </div>
 
-  <div class="form-group mb-2">
-    <%= form.text_field :genre, value: params[:genre], placeholder: 'Genre', class: 'form-control' %>
-  </div>
-
-  <div class="form-group mb-2">
-    <%= form.submit "Filter", class: 'btn btn-primary' %>
+  <div class="form-group mb-2 d-flex justify-content-between">
+    <%= form.submit "Filter", class: 'btn add-watchlist' %>
     <% if @list.present? %>
-      <%= link_to "Delete", list_path(@list), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-flat-secondary-danger" %>
+      <%= link_to "Delete", list_path(@list), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn delete-list" %>
     <% end %>
   </div>
 

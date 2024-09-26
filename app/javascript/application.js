@@ -4,3 +4,4 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 
+import "controllers/form_toggle";

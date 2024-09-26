@@ -14,5 +14,34 @@ input::placeholder {
 
 body{
   color: rgb(233, 221, 221);
-  background: black;
+  background: #080716;
+}
+
+.add-watchlist{
+  font-size: small;
+  background: #215b6a;
+  padding: 6px;
+  border-radius: 15px;
+  color: white;
+  display: inline;
+
+}
+
+.delete-list{
+  font-size: small;
+  background: #8f0202;
+  padding: 6px;
+  border-radius: 15px;
+  color: white;
+  display: block;
+}
+
+.h1-title{
+  background: #110f10;
+  text-align: center;
+  border-radius: 19px;
+}
+
+.search-list{
+  text-align: center;
 }

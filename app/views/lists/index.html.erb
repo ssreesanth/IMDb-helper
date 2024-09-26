@@ -1,13 +1,13 @@
 <div class="container mt-4  test">
-  <h2 class="mb-4">IMDB Watchlist Helper</h2>
+  <h2 class="mb-4 h1-title">IMDB Watchlist Helper</h2>
 
   <div class="mb-4 addlist">
-    <h5 class="mb-4 ">Add IMDb Watchlist</h5>
-    <%= render "shared/addlist_form" %>
+    <h5 class="add-watchlist mb-4 ">Add IMDb Watchlist</h5>
+    <div class="watchlist-form d-none"><%= render "shared/addlist_form" %></div>
   </div>
 
   <div class="mb-4">
-    <h5>Search IMDb Watchlist</h5>
+    <h5 class="search-list">Search IMDb Watchlist</h5>
     <%= render "shared/filter_form" %>
   </div>
 
