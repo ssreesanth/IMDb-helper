@@ -1,4 +1,6 @@
 require "csv"
+require "nokogiri"
+require "open-uri"
 
 class List < ApplicationRecord
   belongs_to :user

@@ -1,9 +1,14 @@
-class ListsController < ApplicationController
+require "nokogiri"
+require "open-uri"
 
+class ListsController < ApplicationController
   def index
     @lists = current_user.lists
     @movies = Movie.all
     @list = List.find_by(params[:list_id])
+  end
+
+  def fluxindex
   end
 
   def import_and_create
