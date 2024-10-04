@@ -15,7 +15,7 @@ class ListsController < ApplicationController
     doc = Nokogiri::HTML.parse(html)
     @songs = doc.search(".title")
 
-    @user = RSpotify::User.find("1193316999")
+    # @user = RSpotify::User.find("1193316999")
     # playlist = @user.create_playlist!('FluxFm Top 30')
     # songs.each do |song|
     #   # Search for the song on Spotify
