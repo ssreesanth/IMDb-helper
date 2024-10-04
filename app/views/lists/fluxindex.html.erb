@@ -1,11 +1,7 @@
 <h2 class="h1-title">Flux Fm Top 30 Songs of the Month</h2>
-<% url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=2024-09-29&ajax=1&days=30&limit=30" %>
-<% html = URI.open(url) %>
-<% doc = Nokogiri::HTML.parse(html) %>
-
-<% songs = doc.search(".title") %>
+<p><%= @user.display_name %></p>
 <ol>
-  <% songs.each do |song| %>
+  <% @songs.each do |song| %>
     <li> <%= song.text.strip %></li>
   <% end %>
 </ol>

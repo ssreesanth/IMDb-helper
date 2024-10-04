@@ -40,7 +40,7 @@ export default class extends Controller {
             <p><b>Title:</b> ${data.Title}</p>
             <p><b>Rating:</b> ${data.imdbRating}</p>
             <p><b>Year:</b> ${data.Year}</p>
-            <p><b>Plot:</b> ${data.Plot}</p>
+            <p class="movie-plot"><b>Plot:</b> ${data.Plot}</p>
           </div>
         `;
 

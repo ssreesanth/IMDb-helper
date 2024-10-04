@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem 'jquery-rails'
 gem "nokogiri"
 gem 'open-uri'
+gem 'rspotify'
 
 
 group :development, :test do

@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require 'rspotify'
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -29,5 +29,7 @@ module ImDbHelper
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    RSpotify.authenticate(ENV["spotify_client_id"], ENV["spotify_client_secret"])
+
   end
 end
