@@ -1,5 +1,6 @@
 require "nokogiri"
 require "open-uri"
+require 'rspotify'
 
 class ListsController < ApplicationController
   def index
@@ -9,6 +10,18 @@ class ListsController < ApplicationController
   end
 
   def fluxindex
+    url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=2024-09-29&ajax=1&days=30&limit=30"
+    html = URI.open(url)
+    doc = Nokogiri::HTML.parse(html)
+    @songs = doc.search(".title")
+
+    @user = RSpotify::User.find("1193316999")
+    # playlist = @user.create_playlist!('FluxFm Top 30')
+    # songs.each do |song|
+    #   # Search for the song on Spotify
+    #   tracks = RSpotify::Track.search(song)
+    #   playlist.add_tracks!(tracks)
+    # end
   end
 
   def import_and_create
