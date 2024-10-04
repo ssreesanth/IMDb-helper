@@ -6,6 +6,3 @@ end
 
 OmniAuth.config.allowed_request_methods = [ :post, :get ]
 
-
-# user = RSpotify::User.find("1193316999")
-# new_playlist = user.create_playlist!('Test Playlist IRB')
