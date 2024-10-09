@@ -10,10 +10,13 @@ class ListsController < ApplicationController
   end
 
   def fluxindex
-    url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=2024-09-29&ajax=1&days=30&limit=30"
-    html = URI.open(url)
-    doc = Nokogiri::HTML.parse(html)
-    @songs = doc.search(".title")
+    # if params[:date].present?
+      date = params[:date].presence || Date.today
+      url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=#{date}&ajax=1&days=30&limit=30"
+      puts "Generated URL: #{url}"
+      html = URI.open(url)
+      doc = Nokogiri::HTML.parse(html)
+      @songs = doc.search(".title")
 
     # @user = RSpotify::User.find("1193316999")
     # playlist = @user.create_playlist!('FluxFm Top 30')

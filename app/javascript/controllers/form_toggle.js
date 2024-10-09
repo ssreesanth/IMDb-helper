@@ -7,5 +7,5 @@ document.addEventListener("DOMContentLoaded", function(){
   toggleButton.addEventListener("click", function(){
     toggleElement.classList.toggle("d-none");
   })
-}, 600)
+}, 500)
 })
