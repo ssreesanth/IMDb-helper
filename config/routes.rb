@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "imdb/:id", to: "lists#show"
   post "/imdb/filter", to: "lists#filter", as: :imdb_filter
   get "/fluxfm", to: "lists#fluxindex"
+  get "/nasa", to: "lists#nasa"
 
   scope "/imdb" do
     resources :lists, only: [:edit, :update, :destroy]
