@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <h2 class="mb-4 h1-title">NASA Image Of The Day</h2>
+
+  <figure class="nasa-image-title">
+    <figcaption>
+      <h4><%= @image[0]["title"] %></h4>
+      <p><%= @image[0]["date"] %></p>
+      <p><%= @image[0]["explanation"] %></p>
+    </figcaption>
+    <img src="<%= @image[0]["url"] %>" alt="NASA image of the day">
+  </figure>
+
+</div>

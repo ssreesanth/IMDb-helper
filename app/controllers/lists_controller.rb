@@ -1,5 +1,6 @@
 require "nokogiri"
 require "open-uri"
+require "json"
 require 'rspotify'
 
 class ListsController < ApplicationController
@@ -10,13 +11,13 @@ class ListsController < ApplicationController
   end
 
   def fluxindex
-    # if params[:date].present?
-      date = params[:date].presence || Date.today
-      url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=#{date}&ajax=1&days=30&limit=30"
-      puts "Generated URL: #{url}"
-      html = URI.open(url)
-      doc = Nokogiri::HTML.parse(html)
-      @songs = doc.search(".title")
+    date = params[:date].presence || Date.today
+    url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=#{date}&ajax=1&days=30&limit=30"
+    puts "Generated URL: #{url}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML.parse(html)
+    @songs = doc.search(".title")
+
 
     # @user = RSpotify::User.find("1193316999")
     # playlist = @user.create_playlist!('FluxFm Top 30')
@@ -25,6 +26,15 @@ class ListsController < ApplicationController
     #   tracks = RSpotify::Track.search(song)
     #   playlist.add_tracks!(tracks)
     # end
+  end
+
+  def nasa
+    api_key = ENV["NASA_API"]
+    date = Date.today
+    url = "https://api.nasa.gov/planetary/apod?api_key=#{api_key}&start_date=#{date}"
+    image_serialized = URI.parse(url).read
+    @image = JSON.parse(image_serialized)
+
   end
 
   def import_and_create
