@@ -30,7 +30,7 @@ class ListsController < ApplicationController
 
   def nasa
     api_key = ENV["NASA_API"]
-    date = Date.today
+    date = params[:date].presence || Date.today
     url = "https://api.nasa.gov/planetary/apod?api_key=#{api_key}&start_date=#{date}"
     image_serialized = URI.parse(url).read
     @image = JSON.parse(image_serialized)
