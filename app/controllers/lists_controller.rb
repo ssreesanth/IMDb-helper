@@ -10,33 +10,6 @@ class ListsController < ApplicationController
     @list = List.find_by(params[:list_id])
   end
 
-  def fluxindex
-    date = params[:date].presence || Date.today
-    url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=#{date}&ajax=1&days=30&limit=30"
-    puts "Generated URL: #{url}"
-    html = URI.open(url)
-    doc = Nokogiri::HTML.parse(html)
-    @songs = doc.search(".title")
-
-
-    # @user = RSpotify::User.find("1193316999")
-    # playlist = @user.create_playlist!('FluxFm Top 30')
-    # songs.each do |song|
-    #   # Search for the song on Spotify
-    #   tracks = RSpotify::Track.search(song)
-    #   playlist.add_tracks!(tracks)
-    # end
-  end
-
-  def nasa
-    api_key = ENV["NASA_API"]
-    date = params[:date].presence || Date.today
-    url = "https://api.nasa.gov/planetary/apod?api_key=#{api_key}&start_date=#{date}"
-    image_serialized = URI.parse(url).read
-    @image = JSON.parse(image_serialized)
-
-  end
-
   def import_and_create
     @list = List.new(list_params) # Uses list_params to get the list's name
     @list.user = current_user # Assign the current user to the list
