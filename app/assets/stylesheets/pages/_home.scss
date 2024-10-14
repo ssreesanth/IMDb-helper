@@ -58,3 +58,19 @@ body{
 .nasa-img-credit{
   font-size: x-small;
 }
+
+.nasa-search{
+  text-align: center;
+}
+
+.free-advise{
+  text-align: center;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
