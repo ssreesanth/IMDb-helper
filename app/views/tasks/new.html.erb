@@ -1,0 +1,12 @@
+<h2>Add a new task</h2>
+<%= form_with model: @task, method: :post, url: tasks_path do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :due_date %>
+    <%= form.date_field :due_date, value: Date.today %>
+  </div>
+  <%= form.submit %>
+<% end %>

@@ -1,5 +1,6 @@
 class FluxfmController < ApplicationController
-
+  skip_before_action :authenticate_user!
+  
   def index
     date = params[:date].presence || Date.today
     url = "https://archiv.fluxfm.de/fluxfm-playlist/?loc=berlin&date=#{date}&ajax=1&days=30&limit=30"
