@@ -1,0 +1,13 @@
+<h2>Tasks Index</h2>
+<%= link_to "New Task", new_task_path %>
+<ol>
+  <% @tasks.each do |task| %>
+    <li>
+      <input type="checkbox">
+      <%= task.name %> - <%= task.due_date %>
+      <%= link_to "edit task", edit_task_path(task) %>
+      <%= link_to "Delete", task, data: { turbo_method: 'delete', turbo_confirm: 'Really?' } %>
+
+    </li>
+  <% end %>
+</ol>

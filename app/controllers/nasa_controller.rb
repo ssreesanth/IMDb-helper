@@ -1,5 +1,6 @@
 class NasaController < ApplicationController
-
+  skip_before_action :authenticate_user!
+  
   def index
     api_key = ENV["NASA_API"]
     date = params[:date].presence || Date.today

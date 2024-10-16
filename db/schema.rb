@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_17_070554) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_16_072325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_17_070554) do
     t.index ["list_id"], name: "index_movies_on_list_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.date "due_date"
+    t.boolean "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +59,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_17_070554) do
 
   add_foreign_key "lists", "users"
   add_foreign_key "movies", "lists"
+  add_foreign_key "tasks", "users"
 end

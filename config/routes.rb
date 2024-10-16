@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "/fluxfm", to: "fluxfm#index"
   get "/nasa", to: "nasa#index"
   get "/freeadvise", to: "freeadvise#index"
+  resources :tasks
 
   scope "/imdb" do
     resources :lists, only: [:edit, :update, :destroy]

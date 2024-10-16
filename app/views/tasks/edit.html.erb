@@ -1,0 +1,12 @@
+<h2>Edit Task</h2>
+<%= form_with model: @task do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :due_date %>
+    <%= form.date_field :due_date, value: @task.due_date || Date.today %>
+  </div>
+  <%= form.submit %>
+<% end %>
