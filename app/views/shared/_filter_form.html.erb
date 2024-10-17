@@ -22,9 +22,9 @@
   </div>
 
   <div class="form-group mb-2 d-flex justify-content-between">
-    <%= form.submit "Filter", class: 'btn add-watchlist' %>
+    <%= form.submit "Filter", class: 'btn green-button' %>
     <% if @list.present? %>
-      <%= link_to "Delete", list_path(@list), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn delete-list" %>
+      <%= link_to "Delete", list_path(@list), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn red-button" %>
     <% end %>
   </div>
 

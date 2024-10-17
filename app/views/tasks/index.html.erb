@@ -1,13 +1,30 @@
-<h2>Tasks Index</h2>
-<%= link_to "New Task", new_task_path %>
-<ol>
-  <% @tasks.each do |task| %>
-    <li>
-      <input type="checkbox">
-      <%= task.name %> - <%= task.due_date %>
-      <%= link_to "edit task", edit_task_path(task) %>
-      <%= link_to "Delete", task, data: { turbo_method: 'delete', turbo_confirm: 'Really?' } %>
+<h2 class="mb-4 h1-title">To-do List</h2>
 
-    </li>
-  <% end %>
-</ol>
+
+<div class= "d-flex justify-content-between">
+  <%= link_to "New Task", new_task_path, class: "btn green-button mb-3" %>
+</div>
+
+<div class="display-tasks">
+  <ol class= "list-group">
+    <% @tasks.each do |task| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        <div class="flex-grow-1">
+          <input type="checkbox" class="form-check-input me-2">
+          <span><%= task.name %></span>
+        </div>
+
+        <div class="mx-3">
+          <span><%= task.due_date.strftime("%d-%b-%y") %></span>
+        </div>
+
+        <div>
+          <%= link_to "Edit", edit_task_path(task), class: "btn green-button me-2" %>
+          <%= link_to "Delete", task, data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "btn red-button" %>
+        </div>
+
+      </li>
+    <% end %>
+  </ol>
+</div>
