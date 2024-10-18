@@ -2,7 +2,7 @@
 <%= form_with model: @task, method: :post, url: tasks_path do |form| %>
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name, maxlength: 19 %>
+    <%= form.text_field :name, maxlength: 21 %>
   </div>
   <div>
     <%= form.label :due_date %>

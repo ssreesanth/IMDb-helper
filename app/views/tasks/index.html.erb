@@ -1,8 +1,10 @@
 <h2 class="mb-4 h1-title">To-do List</h2>
 
 
-<div class= "d-flex justify-content-between">
-  <%= link_to "New Task", new_task_path, class: "btn green-button mb-3" %>
+<div class="d-flex justify-content-between">
+  <button type="button" class="btn green-button mb-3" data-bs-toggle="modal" data-bs-target="#taskModal">
+    New Task
+  </button>
 </div>
 
 <div class="display-tasks">
@@ -10,12 +12,12 @@
     <% @tasks.each do |task| %>
       <li class="list-group-item d-flex justify-content-between align-items-center">
 
-        <div class="ddd">
+        <div class="d-flex">
           <input type="checkbox" class="form-check-input me-2">
           <span class="task-name"><%= task.name %></span>
         </div>
 
-        <div>
+        <div class="dd">
           <span class="task-date"><%= task.due_date.strftime("%d-%b") %></span>
           <%= link_to "Edit", edit_task_path(task), class: "btn green-button task-edit" %>
           <%= link_to "Del", task, data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "btn red-button task-delete" %>
@@ -24,4 +26,30 @@
       </li>
     <% end %>
   </ol>
+</div>
+
+
+<div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="taskModalLabel">Add a New Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Your form here -->
+        <%= form_with model: @task, method: :post, url: tasks_path, remote: true do |form| %>
+          <div class="mb-3">
+            <%= form.label :name %>
+            <%= form.text_field :name, maxlength: 21, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :due_date %>
+            <%= form.date_field :due_date, value: Date.today, class: "form-control" %>
+          </div>
+          <%= form.submit "Create Task", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
