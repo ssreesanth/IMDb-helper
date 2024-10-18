@@ -1,12 +1,12 @@
-<h2>Add a new task</h2>
+<h2 class="mb-4">Add a New Task</h2> <!-- Added margin for spacing -->
 <%= form_with model: @task, method: :post, url: tasks_path do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, maxlength: 21 %>
+  <div class="mb-3"> <!-- Bootstrap margin class for spacing -->
+    <%= form.label :name, class: "form-label" %> <!-- Added Bootstrap class for labels -->
+    <%= form.text_field :name, maxlength: 21, class: "form-control", placeholder: "Enter task name" %> <!-- Added Bootstrap class and placeholder -->
   </div>
-  <div>
-    <%= form.label :due_date %>
-    <%= form.date_field :due_date, value: Date.today %>
+  <div class="mb-3"> <!-- Bootstrap margin class for spacing -->
+    <%= form.label :due_date, class: "form-label" %> <!-- Added Bootstrap class for labels -->
+    <%= form.date_field :due_date, value: Date.today, class: "form-control" %> <!-- Added Bootstrap class -->
   </div>
-  <%= form.submit %>
+  <%= form.submit "Create Task", class: "btn btn-primary" %> <!-- Added Bootstrap button class -->
 <% end %>
