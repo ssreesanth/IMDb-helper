@@ -1,3 +1,4 @@
+// code to add toggle behaviour on the add watchlist button on IMDB
 
 document.addEventListener("DOMContentLoaded", function(){
   setTimeout(function(){
@@ -7,5 +8,5 @@ document.addEventListener("DOMContentLoaded", function(){
   toggleButton.addEventListener("click", function(){
     toggleElement.classList.toggle("d-none");
   })
-}, 500)
+}, 300)
 })

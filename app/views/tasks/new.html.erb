@@ -2,11 +2,14 @@
 <%= form_with model: @task, method: :post, url: tasks_path do |form| %>
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, maxlength: 21, class: "form-control", placeholder: "Enter task name" %> 
+    <%= form.text_field :name, maxlength: 21, class: "form-control", placeholder: "Short task name", required: true %>
   </div>
   <div class="mb-3">
     <%= form.label :due_date, class: "form-label" %>
-    <%= form.date_field :due_date, value: Date.today, class: "form-control" %>
+    <%= form.date_field :due_date, min: Date.today, value: Date.today, class: "form-control" %>
   </div>
-  <%= form.submit "Create Task", class: "btn btn-primary" %>
+  <div class="d-flex justify-content-between align-items-center ">
+    <%= form.submit "Create Task", class: "btn green-button" %>
+    <%= link_to "Cancel", tasks_path, class: "btn red-button" %>
+  </div>
 <% end %>

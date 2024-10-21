@@ -54,3 +54,19 @@ body{
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.nasa-imgexplanation{
+  font-family: nunito;
+  text-align: center;
+}
+
+.nasa-image-title{
+  font-family: monospace;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.nasa-img{
+  box-shadow: 0 0 15px 12px rgba(145, 48, 4, 0.7);
+  border-radius: 35px;
+}
