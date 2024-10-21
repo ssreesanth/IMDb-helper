@@ -2,13 +2,15 @@
 <%= form_with model: @task, class: "form-horizontal" do |form| %>
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, class: "form-control", placeholder: "Enter task name" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter task name", required: true %>
   </div>
   <div class="mb-3">
     <%= form.label :due_date, class: "form-label" %>
     <%= form.date_field :due_date, value: @task.due_date || Date.today, class: "form-control" %>
   </div>
-  <div class="d-grid gap-2">
-    <%= form.submit "Update Task", class: "btn btn-primary" %>
+
+  <div class="d-flex justify-content-between align-items-center ">
+    <%= form.submit "Update Task", class: "btn green-button" %>
+    <%= link_to "Cancel", tasks_path, class: "btn red-button" %>
   </div>
 <% end %>

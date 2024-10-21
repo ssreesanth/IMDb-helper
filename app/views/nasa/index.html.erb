@@ -1,16 +1,15 @@
 <div class="container mt-4">
   <h2 class="mb-4 h1-title">NASA Image Of The Day</h2>
   <%= form_with url: nasa_path, method: :get, local: false, remote: true do |form| %>
-    <div class="nasa-search mb-2">
+    <div class="nasa-search mb-4">
       <%= form.date_field :date, class: "nasa-date", min: "2023-01-01", max: Date.today, value: (params[:date] || Date.today) %>
-      <%= form.submit "Search", class: "nasa-save btn btn-secondary btn-sm" %>
+      <%= form.submit "Search", class: "nasa-save btn green-button" %>
     </div>
   <% end %>
-  <figure class="nasa-image-title">
+  <figure class="nasa-image">
     <figcaption>
-      <h4><%= @image[0]["title"] %></h4>
-      <p><%= @image[0]["date"] %></p>
-      <p><%= @image[0]["explanation"] %></p>
+      <h4 class="nasa-image-title mb-2"><%= @image[0]["title"] %></h4>
+      <p class="nasa-imgexplanation"><%= @image[0]["explanation"] %></p>
     </figcaption>
     <img class= "nasa-img" src="<%= @image[0]["url"] %>" alt="NASA image of the day">
   </figure>
