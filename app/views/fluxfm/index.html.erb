@@ -4,7 +4,14 @@
   <div class="flux-search">
     <%= form.date_field :date, class: "flux-date", min: "2022-01-01", max: Date.today, value: (params[:date] || Date.today) %>
     <%= form.submit "Search", class: "flux-save btn btn-secondary btn-sm" %>
+     <button type="button"
+        class="btn btn-primary btn-sm"
+        data-controller="copy-songs"
+        data-action="click->copy-songs#openSpotlistr">
+        🎧 Export to Spotify
+     </button>
   </div>
+
 <% end %>
 
 <div class="mt-3 ">
